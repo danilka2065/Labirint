@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-// ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
-
 namespace Labirint
 {
     class Program
