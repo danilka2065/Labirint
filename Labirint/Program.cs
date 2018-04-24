@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Labirint
 {
@@ -132,7 +133,14 @@ namespace Labirint
 
         static void Main(string[] args)
         {
+            string pii = "";
+            int i_ma = 1;
+            string path = "";
+            string repath = "";
 
+            string[] line = File.ReadAllLines(@"large-test-in.txt", Encoding.Default);
+
+            int kol_vo_str = Convert.ToInt32(line[0]);
         }
     }
 }
