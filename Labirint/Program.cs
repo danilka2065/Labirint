@@ -141,6 +141,172 @@ namespace Labirint
             string[] line = File.ReadAllLines(@"large-test-in.txt", Encoding.Default);
 
             int kol_vo_str = Convert.ToInt32(line[0]);
+
+            while (kol_vo_str != 0)
+            {
+                for (int m = 1; m <= kol_vo_str; m++)
+                {
+
+                    String[] world = line[m].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    path = world[0];
+                    repath = world[1];
+                    int x = 10;
+                    int y = 10;
+
+                    List<Point> poin = new List<Point>();
+                    Point first = new Point(x, y);
+                    first.North = true;
+                    poin.Add(first);
+                    int xmax = x;
+                    int ymax = y;
+                    int xmin = x;
+                    int ymin = y;
+                    string w = "s";
+
+                    for (int i = 1; i < path.Length; i++)
+                    {
+                        Point point = new Point(x, y);
+                        foreach (Point l in poin)
+                        {
+                            if (l.x == x && l.y == y)
+                            {
+                                if (xmin > x) xmin = x;
+                                if (ymin > y) ymin = y;
+                                if (xmax < x) xmax = x;
+                                if (ymax < y) ymax = y;
+                                point = l;
+                                poin.Remove(l);
+                                break;
+                            }
+
+
+                        }
+                        char p = path[i];
+                        w = Turn(w, p);
+
+
+                        if (p == 'W')
+                        {
+                            if (w == "w")
+                            {
+                                point.West = true;
+                                if (i != path.Length - 1)
+                                    x = x - 1;
+                            }
+                            else if (w == "n")
+                            {
+                                point.North = true;
+                                if (i != path.Length - 1)
+                                    y = y + 1;
+                            }
+                            else if (w == "e")
+                            {
+                                point.East = true;
+                                if (i != path.Length - 1)
+                                    x = x + 1;
+                            }
+                            else if (w == "s")
+                            {
+                                point.South = true;
+                                if (i != path.Length - 1)
+                                    y = y - 1;
+                            }
+                            if (xmin > x) xmin = x;
+                            if (ymin > y) ymin = y;
+                            if (xmax < x) xmax = x;
+                            if (ymax < y) ymax = y;
+                        }
+                        poin.Add(point);
+                    }
+
+                    w = Rever_step(w);
+
+                    for (int i = 1; i < repath.Length; i++)
+                    {
+                        Point point = new Point(x, y);
+                        foreach (Point l in poin)
+                        {
+                            if (l.x == x && l.y == y)
+                            {
+                                if (xmin > x) xmin = x;
+                                if (ymin > y) ymin = y;
+                                if (xmax < x) xmax = x;
+                                if (ymax < y) ymax = y;
+                                point = l;
+                                poin.Remove(l);
+                                break;
+                            }
+
+                        }
+                        char p = repath[i];
+                        w = Turn(w, p);
+
+                        if (p == 'W')
+                        {
+                            if (w == "w")
+                            {
+                                point.West = true;
+                                x = x - 1;
+                            }
+                            else if (w == "n")
+                            {
+                                point.North = true;
+                                y = y + 1;
+                            }
+                            else if (w == "e")
+                            {
+                                point.East = true;
+                                x = x + 1;
+                            }
+                            else if (w == "s")
+                            {
+                                point.South = true;
+                                y = y - 1;
+                            }
+                            if (xmin > x) xmin = x;
+                            if (ymin > y) ymin = y;
+                            if (xmax < x) xmax = x;
+                            if (ymax < y) ymax = y;
+                        }
+                        poin.Add(point);
+
+                    }
+                    int curx = xmin;
+
+                    int cury = ymax - 1;
+                    string[] maze = new string[Math.Abs(ymax - ymin)];
+                    for (int j = 0; j < Math.Abs(ymax - ymin); j++)
+                    {
+                        for (int k = 0; k <= Math.Abs(xmax - xmin); k++)
+                        {
+                            foreach (Point l in poin)
+                            {
+                                if (l.x == curx && l.y == cury)
+                                {
+                                    maze[j] = maze[j] + trans(l);
+                                    break;
+                                }
+                            }
+                            curx = curx + 1;
+                        }
+                        cury = cury - 1;
+                        curx = xmin;
+                    }
+
+                    pii += "Case#" + i_ma + "\r\n";
+                    for (int j = 0; j < Math.Abs(ymax - ymin); j++)
+                    {
+
+                        Console.WriteLine("Обрабатывается");
+                        pii += maze[j] + "\r\n";
+
+                    } i_ma++;
+                }
+                kol_vo_str--;
+            }
+            File.WriteAllText(@"large-test-out.txt", pii);
+            Console.WriteLine("Готово");
+            Console.ReadKey();
         }
     }
 }
