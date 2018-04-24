@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-// ААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААААА
+// Я поняла, как эта штука работает
 
 namespace Labirint
 {
