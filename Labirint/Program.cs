@@ -117,6 +117,19 @@ namespace Labirint
             return c;
         }
 
+        static string Rever_step(string step)
+        {
+            if (step == "w") step = "e";
+
+            else if (step == "e") step = "w";
+
+            else if (step == "s") step = "n";
+
+            else if (step == "n") step = "s";
+
+            return step;
+        }
+
         static void Main(string[] args)
         {
 
