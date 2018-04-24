@@ -48,6 +48,39 @@ namespace Labirint
 
         }
 
+        static string Turn(string w, char p)
+        {
+            if (w == "w")
+            {
+                if (p == 'L') w = "s";
+
+                if (p == 'R') w = "n";
+            }
+
+            else if (w == "n")
+            {
+                if (p == 'L') w = "w";
+
+                if (p == 'R') w = "e";
+            }
+
+            else if (w == "s")
+            {
+                if (p == 'L') w = "e";
+
+                if (p == 'R') w = "w";
+            }
+
+            else
+            {
+                if (p == 'L') w = "n";
+
+                if (p == 'R') w = "s";
+            }
+
+            return w;
+        }
+
         static void Main(string[] args)
         {
 
