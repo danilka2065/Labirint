@@ -1,1 +1,6 @@
 c:\users\даниил\documents\visual studio 2012\Projects\Labirint\Labirint\bin\Debug\Labirint.exe.config
+C:\Users\Даниил\Documents\Visual Studio 2012\Projects\Labirint\Labirint\bin\Debug\Labirint.exe
+C:\Users\Даниил\Documents\Visual Studio 2012\Projects\Labirint\Labirint\bin\Debug\Labirint.pdb
+C:\Users\Даниил\Documents\Visual Studio 2012\Projects\Labirint\Labirint\obj\Debug\Labirint.csprojResolveAssemblyReference.cache
+C:\Users\Даниил\Documents\Visual Studio 2012\Projects\Labirint\Labirint\obj\Debug\Labirint.exe
+C:\Users\Даниил\Documents\Visual Studio 2012\Projects\Labirint\Labirint\obj\Debug\Labirint.pdb
