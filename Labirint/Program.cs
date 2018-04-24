@@ -81,6 +81,42 @@ namespace Labirint
             return w;
         }
 
+        static string trans(Point a)
+        {
+            char[] rov = { '0', '0', '0', '0' };
+            if (a.North == true)
+                rov[3] = '1';
+            if (a.East == true)
+                rov[0] = '1';
+            if (a.West == true)
+                rov[1] = '1';
+            if (a.South == true)
+                rov[2] = '1';
+
+            string c = "s";
+            int num = 0;
+            int step1 = 0;
+
+            for (int i = 3; i >= 0; i--)
+            {
+                if (rov[i] == '1')
+                {
+                    num = num + (int)Math.Pow(2, step1);
+                }
+                step1++;
+            }
+
+            if (num <= 9) c = num.ToString();
+            else if (num == 10) c = "a";
+            else if (num == 11) c = "b";
+            else if (num == 12) c = "c";
+            else if (num == 13) c = "d";
+            else if (num == 14) c = "e";
+            else if (num == 15) c = "f";
+
+            return c;
+        }
+
         static void Main(string[] args)
         {
 
